@@ -2,6 +2,7 @@ from mpi4py import MPI
 import numpy as np
 from openmdao.api import Problem, ScipyOptimizeDriver, ExplicitComponent, IndepVarComp
 import sys
+import time
 
 
 class Paraboloid(ExplicitComponent):
@@ -36,6 +37,7 @@ if __name__ == '__main__':
     if rank == 0:
         x0 = 10 * (np.random.rand(n) - 0.5)
         r = np.random.rand(n)
+        t = time.time()
     else:
         x0 = np.empty(n)
         r = np.empty(n)
@@ -63,6 +65,8 @@ if __name__ == '__main__':
     prob.run_driver()
 
     if rank == 0:
+        print('Took {} seconds.'.format(time.time() - t))
+
         print('Exact optimum is at:')
         print(x0)
         print('Optimum found at:')
