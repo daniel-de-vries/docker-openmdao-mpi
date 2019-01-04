@@ -23,6 +23,7 @@ class Paraboloid(ExplicitComponent):
         outputs['y'] = 0.
         for i, x in enumerate(inputs['x']):
             outputs['y'] += (x - self.options['x0'][i]) ** 2 / self.options['r'][i] ** 2
+        time.sleep(1)
 
 
 if __name__ == '__main__':
