@@ -54,6 +54,9 @@ if __name__ == '__main__':
     prob.driver = ScipyOptimizeDriver()
     prob.driver.options['tol'] = 1e-8
 
+    if rank != 0:
+        prob.driver.options['disp'] = False
+
     prob.set_solver_print(0)
 
     prob.setup()

@@ -10,7 +10,7 @@ WORKDIR /demo
 # Install required packages available from apt-get
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y openmpi-bin libopenmpi-dev libblas-dev liblapack-dev
+    apt-get install -y gfortran openmpi-bin libopenmpi-dev libblas-dev liblapack-dev
 
 # Install required Python packages using pip
 RUN pip install numpy mpi4py openmdao
